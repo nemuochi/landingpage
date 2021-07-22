@@ -88,6 +88,11 @@ section {
     transition: ease 0.3s all;
 }
 
+/* app.js creates this new id: navbar__list */
+#navbar__list {
+  padding: 1em 0 1em 0;
+}
+
 /* Header Styles */
 .page__header {
     background: #fff;

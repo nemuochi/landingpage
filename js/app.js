@@ -17,18 +17,14 @@
  * Define Global Variables
  *
 */
-const sections = document.querySelectorAll('section');
-// Access the ul by it's id name
-const navbarList=document.querySelector('#menu__link');
-
+const allSections = document.querySelectorAll("section");
+const navList = document.querySelector("#menu__link");
 /**
  * End Global Variables
  * Start Helper Functions
  *
 */
-// function(Helper){
-//
-// }
+
 
 
 /**
@@ -37,52 +33,29 @@ const navbarList=document.querySelector('#menu__link');
  *
 */
 
-// build the nav
-// create navigation in HTML with JS as the following elements:
-// <ul id="navbar__list"></ul>
-function createNavLink(section) {
-    const li = document.createElement("li");
-    const aElem = document.createElement("a");
-    const link = `#${section.id}`;
-    const name = section.getAttribute("data-nav");
-    aElem.setAttribute("href", link);
-    aElem.setAttribute("class", `menu__link ${section.id}`);
-    aElem.textContent = name;
-    li.appendChild(aElem);
-    return li;
-}
-// build the nav
-function buildNavMenu() {
-	// const navFragment = document.createDocumentFragment();
-  const nav = document.getElementById("navbar__list");
-  for (const section of sections) {
-    const navList = createNavLink(section);
-    nav.appendChild(navList);
+// build the nav in the <ul id="navbar__list"></li>
+function buildNavMenu(section){
+  // create nav link
+  const li = document.createElement("li");
+  const alink = document.createElement("a");
+  const sectionid = "#${section.id}";
+  const name = section.getAttribute("data-nav");
+  li.setAttribute("class", "menu__link ${section.id}");
+  alink.setAttribute("href", sectionid);
+  alink.textContent = name;
+  li.appendChild(alink);
+  // Add li element in the <ul id="navbar__list"></li>
+  const ulist = document.getElementById("navbar__list");
+  for (const i=0; i < allSections.length; i++){
+    ulist.appendChild(li);
   };
-}
+};
+buildNavMenu();
 
+// Add class 'active' to section when near top of viewport
 
-// Add class 'active' to section when it is near top of viewport
-function makeActive() {
-  for (const section of sections) {
-    const box = section.getBoundingClientRect();
-    // You can play with the values in the "if" condition to further make it more accurate.
-    if (box.top <= 150 && box.bottom >= 150) {
-      // Apply active state on the current section and the corresponding Nav link.
-      // const id = section.getAttribute("id");  document.querySelector(`.${id}`).classList.remove("active");
-      section.classList.add("my-active-class");
-    } else {
-      // Remove active state from other section and corresponding Nav link.
-      // const id = section.getAttribute("id");  document.querySelector(`.${id}`).classList.remove("active");
-      section.classList.remove("my-active-class");
-    }
-  }
-}
+// Scroll to anchor ID using scrollTO event
 
-// Make sections active when you scroll
-document.addEventListener("scroll", function() {
-  makeActive();
-});
 
 /**
  * End Main Functions
@@ -91,11 +64,7 @@ document.addEventListener("scroll", function() {
 */
 
 // Build menu
-document.addEventListener("DOMContentLoaded", function() {
-  //Build navigation menu when the DOM is ready
-  buildNavMenu();
-}
-);
 
+// Scroll to section on link click
 
 // Set sections as active
