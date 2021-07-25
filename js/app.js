@@ -101,7 +101,7 @@ AddTopBtn();
 // Add event listener when you click the Go to Top button.
 function scrolltoTop(){
   document.addEventListener('click', event => {
-    window.scrollTo(0,0);
+    window.scrollTo({top: 0, behavior: 'smooth'});
   });
 };
 scrolltoTop();
