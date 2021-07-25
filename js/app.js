@@ -50,7 +50,7 @@ function buildNavMenu(){
     // Scroll to section on link click
     // Meaning: Use click event listener. Add <li> element click event listener and scroll to the correspondig section.
     li.addEventListener('click', event => {
-      alink.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+      section.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
       });
 
     // Add li element in the <ul id='navbar__list'></li>
@@ -86,6 +86,34 @@ function beActive(){
 
 // Scroll to anchor ID using scrollTO event
 
+// Add GoToTop Button
+function AddTopBtn(){
+  const gotoTop = document.createElement('button');
+  gotoTop.classList.add('btn-top');
+  gotoTop.innerText = 'Go to Top';
+  window.addEventListener('scroll', event => {
+    let scroll = this.scrollY;
+    if (scroll > 500) {
+    gotoTop.style.display = 'block';
+    }else{
+    gotoTop.style.display = 'none';
+    }
+    // Add button on the page
+    document.body.appendChild(gotoTop);
+
+    }
+  );
+};
+
+AddTopBtn();
+
+// Add event listener  Go to Top button.
+function scrolltoTop(){
+  document.addEventListener('click',event => {
+    window.scrollTo(0,0);
+  });
+};
+scrolltoTop();
 
 /**
  * End Main Functions
