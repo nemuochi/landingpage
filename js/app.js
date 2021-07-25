@@ -25,48 +25,40 @@ const navList = document.querySelector('#menu__link');
  *
 */
 
-
-
 /**
  * End Helper Functions
  * Begin Main Functions
  *
 */
 
-// build the nav in the <ul id='navbar__list'></li>
-function buildNavMenu(){
-  // Create nav link list like this:
-  // <li class='#menu__link'><a href='#section.id'>each data-nave string</li>
-  // Build a for loop to iterate over the sections to get the each section's name and add link.
-  for (section of allSections){
-    const li = document.createElement('li');
-    const alink = document.createElement('a');
-    const sectionid = `#${section.id}`;
-    const name = section.getAttribute('data-nav');
-    li.setAttribute('class', `menu__link ${section.id}`);
-    alink.setAttribute('href', sectionid);
-    alink.textContent = name;
-    li.appendChild(alink);
-    // Scroll to section on link click
-    // Meaning: Use click event listener. Add <li> element click event listener and scroll to the correspondig section.
-    li.addEventListener('click', event => {
-      section.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
-      });
-
-    // Add li element in the <ul id='navbar__list'></li>
-    const ulist = document.getElementById('navbar__list');
-    // for (let i=0; i < allSections.length; i++){
-      ulist.appendChild(li);
-    // };
-  };
-};
-
-// hint:
+// build the nav menu in the <ul id='navbar__list'></li>
+// Create nav link list like this:
+// <li class='menu__link section.id'><a href='#section.id'>each 'data-nav' string</li>
+// Build a for loop to iterate over the sections to get the each section's name and add link.
+// Hint:
 // for (section of allSections){
 //     buildNavMenu(section);
 // };
-
-buildNavMenu();
+function buildNavMenu(){
+  for (section of allSections){
+    const li = document.createElement('li');
+    const alink = document.createElement('a');
+    // const sectionid = `#${section.id}`;
+    const name = section.getAttribute('data-nav');
+    li.setAttribute('class', `menu__link ${section.id}`);
+    alink.setAttribute('href', `#${section.id}`);
+    alink.textContent = name;
+    li.appendChild(alink);
+    // Scroll to section on link click
+    // Use click event listener. Add <li> element click event listener and scroll to the correspondig section.
+    li.addEventListener('click', event => {
+      section.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+      });
+    // Add li element in the <ul id='navbar__list'></li>
+    const ulist = document.getElementById('navbar__list');
+    ulist.appendChild(li);
+  };
+};
 
 // Add class 'active' to section when near top of viewport
 // Hint: Use Element.getBoundingClientRect()
@@ -91,30 +83,28 @@ function AddTopBtn(){
   const gotoTop = document.createElement('button');
   gotoTop.classList.add('btn-top');
   gotoTop.innerText = 'Go to Top';
+  // Add scroll event listener so the button appears more than 500 px away from the top.
   window.addEventListener('scroll', event => {
     let scroll = this.scrollY;
     if (scroll > 500) {
-    gotoTop.style.display = 'block';
-    }else{
-    gotoTop.style.display = 'none';
-    }
+      gotoTop.style.display = 'block';
+      }else{
+      gotoTop.style.display = 'none';
+    };
     // Add button on the page
     document.body.appendChild(gotoTop);
-
     }
   );
 };
-
 AddTopBtn();
 
-// Add event listener  Go to Top button.
+// Add event listener when you click the Go to Top button.
 function scrolltoTop(){
-  document.addEventListener('click',event => {
+  document.addEventListener('click', event => {
     window.scrollTo(0,0);
   });
 };
 scrolltoTop();
-
 /**
  * End Main Functions
  * Begin Events
@@ -122,13 +112,12 @@ scrolltoTop();
 */
 
 // Build menu
-// Meaning: ??
+buildNavMenu();
 
 // Scroll to section on link click
-// Meaning:
 
 // Set sections as active
-// Meaning: Use scroll event listener and call the function beActive.
+// Use scroll event listener and call the function beActive.
 document.addEventListener('scroll', function() {
   beActive();
   }
