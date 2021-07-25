@@ -13,6 +13,12 @@
  *
 */
 
+// References:
+ // - https://github.com/AmaPal09/UD_FEND_PRJ2/tree/trunk/js
+ // - https://github.com/clennone/landing-page-christ/blob/gh-pages/js/app.js
+ // - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
+ // - https://knowledge.udacity.com/
+
 /**
  * Define Global Variables
  *
