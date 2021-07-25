@@ -83,7 +83,7 @@ section {
 }
 
 .navbar__menu .menu__link:hover {
-    background: #333;
+    background: #cc1;
     color: #fff;
     transition: ease 0.3s all;
 }
@@ -199,7 +199,7 @@ section:nth-of-type(3n + 1) .landing__container::after {
 /* Section Active Styles */
 section.my-active-class {
     background: rgb(0, 0, 0);
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%);
 }
 
 section.my-active-class .landing__container::before {
@@ -209,8 +209,7 @@ section.my-active-class .landing__container::before {
 
 section.my-active-class .landing__container::after {
     opacity: 5;
-    background: yellow;
-    animation: rotate 5s linear 0s infinite forwards reverse;
+    animation: rotate 5s linear 0s infinite reverse forwards;
 }
 
 /* Section Active Styles Keyframe Animations */
