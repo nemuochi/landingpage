@@ -18,6 +18,7 @@
  // - https://github.com/clennone/landing-page-christ/blob/gh-pages/js/app.js
  // - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
  // - https://knowledge.udacity.com/
+ // - https://knowledge.udacity.com/questions/642778
 
 /**
  * Define Global Variables
@@ -46,7 +47,7 @@ const navList = document.querySelector('#menu__link');
 //     buildNavMenu(section);
 // };
 function buildNavMenu(){
-  for (section of allSections){
+  allSections.forEach((section) => {
     const li = document.createElement('li');
     const alink = document.createElement('a');
     // const sectionid = `#${section.id}`;
@@ -57,13 +58,14 @@ function buildNavMenu(){
     li.appendChild(alink);
     // Scroll to section on link click
     // Use click event listener. Add <li> element click event listener and scroll to the correspondig section.
-    li.addEventListener('click', event => {
-      section.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+    li.addEventListener('click', (e) => {
+      e.preventDefault();
+      section.scrollIntoView({behavior: 'smooth'});
       });
     // Add li element in the <ul id='navbar__list'></li>
     const ulist = document.getElementById('navbar__list');
     ulist.appendChild(li);
-  };
+  });
 };
 
 // Add class 'active' to section when near top of viewport
@@ -84,33 +86,6 @@ function beActive(){
 
 // Scroll to anchor ID using scrollTO event
 
-// Add GoToTop Button
-function AddTopBtn(){
-  const gotoTop = document.createElement('button');
-  gotoTop.classList.add('btn-top');
-  gotoTop.innerText = 'Go to Top';
-  // Add scroll event listener so the button appears more than 500 px away from the top.
-  window.addEventListener('scroll', event => {
-    let scroll = this.scrollY;
-    if (scroll > 500) {
-      gotoTop.style.display = 'block';
-      }else{
-      gotoTop.style.display = 'none';
-    };
-    // Add button on the page
-    document.body.appendChild(gotoTop);
-    }
-  );
-};
-AddTopBtn();
-
-// Add event listener when you click the Go to Top button.
-function scrolltoTop(){
-  document.addEventListener('click', event => {
-    window.scrollTo({top: 0, behavior: 'smooth'});
-  });
-};
-scrolltoTop();
 /**
  * End Main Functions
  * Begin Events
@@ -128,3 +103,32 @@ document.addEventListener('scroll', function() {
   beActive();
   }
 );
+
+// Add GoToTop Button
+function addTopBtn(){
+  const gotoTop = document.createElement('button');
+  gotoTop.classList.add('btn-top');
+  gotoTop.innerText = 'Go to Top';
+  // Add scroll event listener so the button appears more than 500 px away from the top.
+  window.addEventListener('scroll', event => {
+    let scroll = this.scrollY;
+    if (scroll > 500) {
+      gotoTop.style.display = 'block';
+      }else{
+      gotoTop.style.display = 'none';
+    };
+    // Add button on the page
+    document.body.appendChild(gotoTop);
+    }
+  );
+};
+addTopBtn();
+
+// Add event listener when you click the Go to Top button.
+function scrolltoTop(){
+  document.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+};
+scrolltoTop();
