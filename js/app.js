@@ -119,16 +119,15 @@ function addTopBtn(){
     };
     // Add button on the page
     document.body.appendChild(gotoTop);
-    }
-  );
-};
-addTopBtn();
-
-// Add event listener when you click the Go to Top button.
-function scrolltoTop(){
-  document.addEventListener('click', (e) => {
+    });
+  // Add event listener when you click the Go to Top button.
+  gotoTop.addEventListener('click', (e) => {
     e.preventDefault();
     window.scrollTo({top: 0, behavior: 'smooth'});
   });
+  // gotoTop.addEventListener('click', (e) => {
+  //   e.preventDefault();
+  //   document.scrollTo({top: 0, behavior: 'smooth'});
+  // });
 };
-scrolltoTop();
+addTopBtn();
